@@ -3,6 +3,9 @@ const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
 const User = require('./models/users');
+const userRoute = require('./routes/userRoute');
+const reviewRoute = require('./routes/reviewRoute');
+const cartoonRoute = require('./routes/cartoonRoute');
 const port = 3000;
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -16,17 +19,13 @@ app.get('/', (req, res) => {
     res.send("Welcome to the SBA319");
 });
 
-app.get('/users', async (req, res) => {
-    let users = await User.find();
-    res.send(users);
-});
+app.use('/', userRoute);
 
-app.post('/users', async (req, res) => {
-    let result = await User.findOne().sort({u_id: -1});
-    req.body.u_id = result.u_id + 1;
-    await User.create(req.body);
-    res.send("User created");
-});
+app.use('/', reviewRoute);
+
+app.use('/', cartoonRoute);
+
+
 
 
 app.listen(port, () => {
