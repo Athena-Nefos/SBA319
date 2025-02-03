@@ -29,6 +29,8 @@ const reviewSchema = new mongoose.Schema({
 },
 {versionKey:false});
 
+reviewSchema.index({username: 1, cartoonTitle: 1}, {unique: true});
+
 const Review = mongoose.model("Review", reviewSchema);
 
 module.exports = Review;

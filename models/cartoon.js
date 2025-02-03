@@ -50,6 +50,8 @@ const cartoonSchema = new mongoose.Schema({
     versionKey: false
 });
 
+cartoonSchema.index({title: 1, creator: 1}, {unique: true});
+
 const Cartoon = mongoose.model("Cartoon", cartoonSchema);
 
 module.exports = Cartoon;

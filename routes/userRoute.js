@@ -8,12 +8,15 @@ router.get('/users', async (req, res) => {
     res.send(users);
 });
 
-router.post('/users', async (req, res) => {
-    // let result = await User.findOne().sort({u_id: -1});
-    // req.body.u_id = result.u_id + 1;
-    await User.create(req.body);
-    res.send("User created");
-});
+router.post("/users", async (req, res) => {
+    try {
+        const newUser = new User(req.body);
+        await newUser.save();
+        res.status(201).json({ message: "User created successfully", user: newUser });
+    } catch (error) {
+        res.status(400).json({ message: "Validation error", error: error.message });
+    }
+    });
 
 router.get('/users/:username', async (req, res) => {
     let users = await User.findOne({username: req.params.username});
@@ -37,5 +40,7 @@ router.delete('/users/:username', async (req, res) => {
         res.status(200).send("User Deleted");
     }
 });
+
+
 
 module.exports = router;
