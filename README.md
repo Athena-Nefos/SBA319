@@ -19,3 +19,12 @@ Make sure you have the following installed:
 
 ---
 
+Reflections:
+
+I am still learning so i am sure there are a lot i can do beter, however this is where i am at now in my learning.  I am happy to build functional code.
+
+I find this all a bit challenging, especially at first, however , it does get easier as I get more familiar with the process and the expectation of errors that come along with the work.
+
+I am sure there is a lot i would develope to this application as i get mpore familiar with the code and the capabilities that come along with know the code better.
+
+. keep practing .   
